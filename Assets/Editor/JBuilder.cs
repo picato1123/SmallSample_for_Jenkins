@@ -5,16 +5,6 @@ using UnityEditor;
 
 public class JBuilder : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     [UnityEditor.MenuItem("Tools/Build Project AllScene Android")]
     public static void BuildProjectAllSceneAndroid()
     {
