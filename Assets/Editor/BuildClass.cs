@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class JBuilder : MonoBehaviour
+public class BuildClass : MonoBehaviour
 {
     public static void Build()
     {
@@ -17,7 +17,7 @@ public class JBuilder : MonoBehaviour
         string errorMessage = BuildPipeline.BuildPlayer
             (
             sceneList,
-            "C:/Users/hisat/Unity_project/SmallSample_for_Jenkins/SSampleJK.apk",
+            "C:/Users/hisat/Unity_project/SmallSample_for_Jenkins/SmallSampleforJenkins.apk",
             BuildTarget.Android,
             BuildOptions.Development
             );
