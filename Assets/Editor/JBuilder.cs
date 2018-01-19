@@ -3,28 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class JBuilder : MonoBehaviour {
-
-    [UnityEditor.MenuItem("Tools/Build Project AllScene Android")]
-    public static void BuildProjectAllSceneAndroid()
+public class JBuilder : MonoBehaviour
+{
+    public static void Build()
     {
-
-        EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
-        List<string> allScene = new List<string>();
-        foreach (EditorBuildSettingsScene scene in EditorBuildSettings.scenes)
+        //ビルド対象シーンリスト
+        string[] sceneList =
         {
-            if (scene.enabled)
-            {
-                allScene.Add(scene.path);
-            }
-        }
-        PlayerSettings.applicationIdentifier = "com.ht.sampleforjenkins";
-        PlayerSettings.statusBarHidden = true;
-        BuildPipeline.BuildPlayer(
-            allScene.ToArray(),
-            "BuildforJenkins.apk",
+            "./Assets/Main.unity"
+        };
+
+        //実行
+        string errorMessage = BuildPipeline.BuildPlayer
+            (
+            sceneList,
+            "C:/Users/hisat/Unity_project/SmallSample_for_Jenkins/SSampleJK.apk",
             BuildTarget.Android,
-            BuildOptions.None
-        );
+            BuildOptions.Development
+            );
+
+        //出力結果
+        if (!string.IsNullOrEmpty(errorMessage))
+            Debug.LogError("[Error!]" + errorMessage);
+        else
+            Debug.Log("[Sucess!]");
     }
+
 }
